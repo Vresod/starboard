@@ -39,7 +39,7 @@ async def on_raw_reaction_add(payload:discord.RawReactionActionEvent):
 	for reaction in message.reactions:
 		if reaction.count > 1:
 			return
-	pin_author = await message.reactions[0].users().flatten()[0]
+	pin_author = (await message.reactions[0].users(limit=1).flatten())[0]
 	await pin_message(message,starboard,pin_author)
 
 @client.event
