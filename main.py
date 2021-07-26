@@ -25,7 +25,7 @@ async def pin_message(message:discord.Message,starboard:discord.TextChannel,pin_
 	embed.add_field(name="Original Message:",value=f"[Jump]({message.jump_url})")
 	if len(message.attachments) > 0: embed.set_image(url=message.attachments[0].url)
 	await starboard.send(embed=embed,content=f"pinned by <@{pin_author.id}>",allowed_mentions=discord.AllowedMentions.none())
-	await message.channel.send(embed=discord.Embed(description=f"{pin_author.display_name} has pinned [a message]({message.jump_url}) to this channel. See all [pinned messages](https://discord.com/channels/{starboard.guild.id}/{STARBOARD_CHANNEL})"))
+	await message.channel.send(embed=discord.Embed(description=f"{pin_author.display_name} has pinned [a message]({message.jump_url}) to this channel. See all [pinned messages](https://discord.com/channels/{starboard.guild.id}/{STARBOARD_CHANNEL})."))
 
 @client.event
 async def on_ready():
