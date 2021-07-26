@@ -58,4 +58,8 @@ async def on_raw_message_edit(payload:discord.RawMessageUpdateEvent):
 	await message.unpin()
 	await pin_message(message,starboard,author)
 
+@client.event
+async def on_message(message:discord.Message):
+	if message.type == discord.MessageType.pins_add: await message.delete()
+
 client.run(config.TOKEN,bot=config.BOT)
