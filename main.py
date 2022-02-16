@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import discord
 from discord.ext import commands
 from extra import DotDict
@@ -62,4 +64,4 @@ async def on_raw_message_edit(payload:discord.RawMessageUpdateEvent):
 async def on_message(message:discord.Message):
 	if message.type == discord.MessageType.pins_add: await message.delete()
 
-client.run(config.TOKEN,bot=config.BOT)
+client.run(config.TOKEN)
