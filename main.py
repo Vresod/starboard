@@ -10,7 +10,7 @@ config = DotDict({
 	**dict(dotenv_values('.env')),
 })
 
-client = commands.Bot(command_prefix='s!')
+client = commands.Bot(command_prefix='s!',help_command=None)
 
 # constants, probably should be loaded from a config file or made unconstant
 STARBOARD_CHANNEL = 869052275816017952
@@ -22,7 +22,7 @@ async def pin_message(message:discord.Message,starboard:discord.TextChannel,pin_
 		description=message.content,
 		url=f"https://discord.com/channels/{message.guild.id}/{message.channel.id}"
 	)
-	embed.set_author(name=message.author.display_name,icon_url=message.author.avatar_url)
+	embed.set_author(name=message.author.display_name,icon_url=str(message.author.avatar))
 	# embed.set_footer(text=f"[Jump]({message.jump_url})")
 	embed.add_field(name="Original Message:",value=f"[Jump]({message.jump_url})")
 	if len(message.attachments) > 0: embed.set_image(url=message.attachments[0].url)
